@@ -3,7 +3,8 @@
 Personal website for Tin Banozic, served by the Cloudflare Worker `tin-banozic`.
 
 - `index.html`: the page
-- `worker.js`: serves the page
+- `img/`: profile photo (`avatar.webp`) and site icons (`favicon.png`, `apple-touch-icon.jpg`)
+- `worker.js`: serves the page and images
 - `wrangler.jsonc`: Worker config with custom domains `tin-banozic.from.hr` and `www.tin-banozic.from.hr`
 
 ## Deploys

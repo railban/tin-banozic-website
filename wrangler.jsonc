@@ -3,6 +3,9 @@
   "main": "worker.js",
   "compatibility_date": "2026-10-01",
   "workers_dev": false,
+  "rules": [
+    { "type": "Data", "globs": ["**/*.webp", "**/*.png", "**/*.jpg"] }
+  ],
   "routes": [
     { "pattern": "tin-banozic.from.hr", "custom_domain": true },
     { "pattern": "www.tin-banozic.from.hr", "custom_domain": true }
