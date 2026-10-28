@@ -1,0 +1,10 @@
+{
+  "name": "tin-banozic",
+  "main": "worker.js",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": false,
+  "routes": [
+    { "pattern": "tin-banozic.from.hr", "custom_domain": true },
+    { "pattern": "www.tin-banozic.from.hr", "custom_domain": true }
+  ]
+}
