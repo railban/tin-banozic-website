@@ -6,7 +6,9 @@
   <title>Tin Banozic</title>
   <meta name="description" content="Tin Banozic. Coming soon.">
   <meta name="theme-color" content="#07090f">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322d3ee'/%3E%3Cstop offset='1' stop-color='%236366f1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='url(%23g)'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='700' fill='%23fff' text-anchor='middle'%3ETB%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" as="image" href="/img/avatar.webp">
   <style>
     :root {
       --bg: #07090f;
@@ -69,20 +71,47 @@
 
     main { position: relative; z-index: 1; max-width: 720px; }
 
-    .mark {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 36px;
-      border-radius: 18px;
-      display: grid;
-      place-items: center;
-      font-weight: 700;
-      font-size: 24px;
-      letter-spacing: -0.02em;
-      color: #fff;
-      background: linear-gradient(135deg, #22d3ee, #6366f1);
-      box-shadow: 0 12px 40px rgba(99, 102, 241, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.35);
-      animation: pop 0.9s cubic-bezier(.2, 1.4, .4, 1) 0.1s both;
+    /* Photo in a circle with a slowly rotating gradient ring */
+    .avatar {
+      position: relative;
+      width: 132px;
+      height: 132px;
+      margin: 0 auto 32px;
+      animation: pop 1s cubic-bezier(.2, 1.4, .4, 1) 0.1s both;
+    }
+    .avatar::before {
+      content: "";
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      background: conic-gradient(from var(--angle), #22d3ee, #6366f1, #ec4899, #22d3ee);
+      animation: spin 6s linear infinite;
+    }
+    .avatar::after {
+      content: "";
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      background: conic-gradient(from var(--angle), #22d3ee, #6366f1, #ec4899, #22d3ee);
+      filter: blur(22px);
+      opacity: 0.55;
+      z-index: -1;
+      animation: spin 6s linear infinite;
+    }
+    .avatar img {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--bg);
+    }
+    @property --angle {
+      syntax: "<angle>";
+      inherits: false;
+      initial-value: 0deg;
     }
 
     .hello {
@@ -172,6 +201,7 @@
     @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
     @keyframes pop { from { opacity: 0; transform: scale(0.4) rotate(-12deg); } to { opacity: 1; transform: none; } }
     @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes spin { to { --angle: 360deg; } }
     @keyframes wave {
       0%, 60%, 100% { transform: rotate(0); }
       10%, 30% { transform: rotate(14deg); }
@@ -197,7 +227,7 @@
   <div class="grid" aria-hidden="true"></div>
 
   <main>
-    <div class="mark" aria-hidden="true">TB</div>
+    <div class="avatar"><img src="/img/avatar.webp" alt="Tin Banozic" width="132" height="132"></div>
     <p class="hello">Hello, I'm <span class="wave">👋</span></p>
     <h1 aria-label="Tin Banozic">
       <span class="word" aria-hidden="true"><span class="l" style="--i:0">T</span><span class="l" style="--i:1">i</span><span class="l" style="--i:2">n</span></span>
