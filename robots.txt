@@ -1,4 +1,1 @@
-User-agent: *
-Allow: /
-
 Sitemap: https://tin-banozic.from.hr/sitemap.xml
