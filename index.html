@@ -5,33 +5,206 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tin Banozic</title>
   <meta name="description" content="Tin Banozic. Coming soon.">
+  <meta name="theme-color" content="#07090f">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322d3ee'/%3E%3Cstop offset='1' stop-color='%236366f1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='url(%23g)'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='700' fill='%23fff' text-anchor='middle'%3ETB%3C/text%3E%3C/svg%3E">
   <style>
+    :root {
+      --bg: #07090f;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --line: rgba(255, 255, 255, 0.1);
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 32px 16px;
-      background: #fafaf9;
-      color: #1c1917;
+      background: var(--bg);
+      color: var(--text);
       font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       text-align: center;
+      overflow-x: hidden;
     }
-    h1 { font-size: clamp(36px, 8vw, 56px); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 12px; }
-    p { font-size: 18px; color: #78716c; line-height: 1.6; }
-    a { color: inherit; }
-    @media (prefers-color-scheme: dark) {
-      body { background: #0c0a09; color: #fafaf9; }
-      p { color: #a8a29e; }
+
+    /* Slowly drifting aurora in the background */
+    .aurora {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      animation: fade 2s ease both;
+    }
+    .aurora span {
+      position: absolute;
+      width: 55vmax;
+      height: 55vmax;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.32;
+      mix-blend-mode: screen;
+    }
+    .aurora span:nth-child(1) { background: #06b6d4; top: -25vmax; left: -15vmax; animation: drift1 18s ease-in-out infinite alternate; }
+    .aurora span:nth-child(2) { background: #6366f1; bottom: -30vmax; right: -20vmax; animation: drift2 22s ease-in-out infinite alternate; }
+    .aurora span:nth-child(3) { background: #ec4899; top: 40%; left: 50%; width: 30vmax; height: 30vmax; opacity: 0.16; animation: drift3 26s ease-in-out infinite alternate; }
+
+    /* Fine grid that fades out toward the edges */
+    .grid {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 56px 56px;
+      opacity: 0.35;
+      -webkit-mask-image: radial-gradient(ellipse at center, #000 10%, transparent 65%);
+      mask-image: radial-gradient(ellipse at center, #000 10%, transparent 65%);
+      animation: fade 2.5s ease 0.3s both;
+    }
+
+    main { position: relative; z-index: 1; max-width: 720px; }
+
+    .mark {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 36px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 24px;
+      letter-spacing: -0.02em;
+      color: #fff;
+      background: linear-gradient(135deg, #22d3ee, #6366f1);
+      box-shadow: 0 12px 40px rgba(99, 102, 241, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      animation: pop 0.9s cubic-bezier(.2, 1.4, .4, 1) 0.1s both;
+    }
+
+    .hello {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      animation: rise 0.8s cubic-bezier(.2, .7, .2, 1) 0.35s both;
+    }
+    .wave { display: inline-block; transform-origin: 70% 70%; animation: wave 2.2s ease-in-out 1.2s 2; }
+
+    /* Name: each letter slides up out of a blur */
+    h1 {
+      font-size: clamp(44px, 11vw, 96px);
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      line-height: 1;
+      margin-bottom: 28px;
+      white-space: nowrap;
+    }
+    h1 .word { display: inline-block; }
+    h1 .l {
+      display: inline-block;
+      background: linear-gradient(100deg, #f8fafc 20%, #67e8f9 50%, #a5b4fc 70%, #f8fafc 90%);
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation:
+        letter 0.9s cubic-bezier(.2, .8, .2, 1) calc(0.5s + var(--i) * 0.05s) both,
+        shine 6s linear 2s infinite;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      padding: 9px 16px;
+      border-radius: 999px;
+      animation: rise 0.8s cubic-bezier(.2, .7, .2, 1) 1.2s both;
+    }
+    .badge i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22d3ee;
+      box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.6);
+      animation: pulse 2s infinite;
+    }
+
+    .email {
+      display: inline-block;
+      margin-top: 28px;
+      font-size: 16px;
+      color: var(--text);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 4px;
+      animation: rise 0.8s cubic-bezier(.2, .7, .2, 1) 1.4s both;
+    }
+    .email::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: linear-gradient(90deg, #22d3ee, #6366f1);
+      transform: scaleX(0.35);
+      transition: transform 0.35s ease;
+    }
+    .email:hover::after, .email:focus-visible::after { transform: scaleX(1); }
+
+    @keyframes letter {
+      from { opacity: 0; transform: translateY(0.45em) rotate(4deg); filter: blur(12px); }
+      to { opacity: 1; transform: none; filter: blur(0); }
+    }
+    @keyframes shine { to { background-position: -300% 0; } }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+    @keyframes pop { from { opacity: 0; transform: scale(0.4) rotate(-12deg); } to { opacity: 1; transform: none; } }
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes wave {
+      0%, 60%, 100% { transform: rotate(0); }
+      10%, 30% { transform: rotate(14deg); }
+      20% { transform: rotate(-8deg); }
+      40% { transform: rotate(-4deg); }
+      50% { transform: rotate(10deg); }
+    }
+    @keyframes pulse {
+      70% { box-shadow: 0 0 0 8px rgba(34, 211, 238, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0); }
+    }
+    @keyframes drift1 { to { transform: translate(18vmax, 12vmax) scale(1.15); } }
+    @keyframes drift2 { to { transform: translate(-16vmax, -10vmax) scale(1.1); } }
+    @keyframes drift3 { to { transform: translate(-30vmax, -20vmax) scale(1.3); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
     }
   </style>
 </head>
 <body>
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="grid" aria-hidden="true"></div>
+
   <main>
-    <h1>Tin Banozic</h1>
-    <p>Hello! Something is coming soon.</p>
-    <p><a href="mailto:hello@tin-banozic.from.hr">hello@tin-banozic.from.hr</a></p>
+    <div class="mark" aria-hidden="true">TB</div>
+    <p class="hello">Hello, I'm <span class="wave">👋</span></p>
+    <h1 aria-label="Tin Banozic">
+      <span class="word" aria-hidden="true"><span class="l" style="--i:0">T</span><span class="l" style="--i:1">i</span><span class="l" style="--i:2">n</span></span>
+      <span class="word" aria-hidden="true"><span class="l" style="--i:4">B</span><span class="l" style="--i:5">a</span><span class="l" style="--i:6">n</span><span class="l" style="--i:7">o</span><span class="l" style="--i:8">z</span><span class="l" style="--i:9">i</span><span class="l" style="--i:10">c</span></span>
+    </h1>
+    <div><span class="badge"><i></i>Coming soon</span></div>
+    <a class="email" href="mailto:hello@tin-banozic.from.hr">hello@tin-banozic.from.hr</a>
   </main>
 </body>
 </html>
