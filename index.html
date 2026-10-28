@@ -170,29 +170,6 @@
       animation: pulse 2s infinite;
     }
 
-    .email {
-      display: inline-block;
-      margin-top: 28px;
-      font-size: 16px;
-      color: var(--text);
-      text-decoration: none;
-      position: relative;
-      padding-bottom: 4px;
-      animation: rise 0.8s cubic-bezier(.2, .7, .2, 1) 1.4s both;
-    }
-    .email::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 1px;
-      background: linear-gradient(90deg, #22d3ee, #6366f1);
-      transform: scaleX(0.35);
-      transition: transform 0.35s ease;
-    }
-    .email:hover::after, .email:focus-visible::after { transform: scaleX(1); }
-
     @keyframes letter {
       from { opacity: 0; transform: translateY(0.45em) rotate(4deg); filter: blur(12px); }
       to { opacity: 1; transform: none; filter: blur(0); }
@@ -234,7 +211,6 @@
       <span class="word" aria-hidden="true"><span class="l" style="--i:4">B</span><span class="l" style="--i:5">a</span><span class="l" style="--i:6">n</span><span class="l" style="--i:7">o</span><span class="l" style="--i:8">z</span><span class="l" style="--i:9">i</span><span class="l" style="--i:10">c</span></span>
     </h1>
     <div><span class="badge"><i></i>Coming soon</span></div>
-    <a class="email" href="mailto:hello@tin-banozic.from.hr">hello@tin-banozic.from.hr</a>
   </main>
 </body>
 </html>
