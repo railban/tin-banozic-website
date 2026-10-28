@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found · Tin Banozic</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#07090f">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <style>
+    :root {
+      --bg: #07090f;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --line: rgba(255, 255, 255, 0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    /* Same aurora as the homepage, kept still */
+    .aurora {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .aurora span {
+      position: absolute;
+      width: 55vmax;
+      height: 55vmax;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.32;
+      mix-blend-mode: screen;
+    }
+    .aurora span:nth-child(1) { background: #06b6d4; top: -25vmax; left: -15vmax; }
+    .aurora span:nth-child(2) { background: #6366f1; bottom: -30vmax; right: -20vmax; }
+
+    main { position: relative; z-index: 1; max-width: 720px; }
+
+    h1 {
+      font-size: clamp(72px, 20vw, 160px);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      margin-bottom: 20px;
+      background: linear-gradient(100deg, #f8fafc 20%, #67e8f9 50%, #a5b4fc 70%, #f8fafc 90%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    p {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      padding: 11px 20px;
+      border-radius: 999px;
+      transition: border-color 0.25s ease, background 0.25s ease;
+    }
+    a:hover, a:focus-visible { border-color: rgba(103, 232, 249, 0.6); background: rgba(103, 232, 249, 0.08); }
+  </style>
+</head>
+<body>
+  <div class="aurora" aria-hidden="true"><span></span><span></span></div>
+
+  <main>
+    <h1>404</h1>
+    <p>This page doesn't exist.</p>
+    <a href="/">← Back to homepage</a>
+  </main>
+</body>
+</html>
