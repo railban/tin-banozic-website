@@ -42,7 +42,6 @@
       "description": "Senior Product Manager with 15+ years building digital products, B2B SaaS, cloud marketplaces, web and apps.",
       "url": "https://tin-banozic.from.hr/",
       "image": "https://tin-banozic.from.hr/img/avatar.webp",
-      "email": "mailto:hello@tin-banozic.from.hr",
       "address": { "@type": "PostalAddress", "addressCountry": "HR" },
       "knowsAbout": ["Product management", "Digital products", "B2B SaaS", "Platforms and marketplaces", "Web and apps", "Growth and conversion", "UX", "Product analytics", "AI agents", "Workflow automation"],
       "knowsLanguage": ["hr", "en", "de"],
@@ -300,7 +299,7 @@
     .card p { font-size: 15px; line-height: 1.55; color: var(--muted); }
 
     .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
-    .links a {
+    .links a, .links .nojs {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -424,7 +423,16 @@
       <h2>Get in touch</h2>
       <p class="lead">Open to conversations about product, growth and AI.</p>
       <div class="links">
-        <a href="mailto:hello@tin-banozic.from.hr">hello@tin-banozic.from.hr</a>
+        <script>
+          // Assemble the address at runtime so it never appears as plain text in the page source
+          (function (s) {
+            var a = document.createElement("a"), e = ["hello", "tin-banozic.from.hr"].join("@");
+            a.href = "mailto:" + e;
+            a.textContent = e;
+            s.parentNode.insertBefore(a, s);
+          })(document.currentScript);
+        </script>
+        <noscript><span class="nojs">hello [at] tin-banozic.from.hr</span></noscript>
         <a href="https://www.linkedin.com/in/tinbanozic" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
       </div>
     </section>
