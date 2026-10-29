@@ -5,11 +5,13 @@ import sitemap from "./sitemap.xml";
 import avatar from "./img/avatar.webp";
 import favicon from "./img/favicon.png";
 import appleTouchIcon from "./img/apple-touch-icon.jpg";
+import ogImage from "./img/og.jpg";
 
 const files = {
   "/img/avatar.webp": [avatar, "image/webp"],
   "/favicon.png": [favicon, "image/png"],
   "/apple-touch-icon.png": [appleTouchIcon, "image/jpeg"],
+  "/og.jpg": [ogImage, "image/jpeg"],
   "/robots.txt": [robots, "text/plain; charset=utf-8"],
   "/sitemap.xml": [sitemap, "application/xml; charset=utf-8"],
 };
