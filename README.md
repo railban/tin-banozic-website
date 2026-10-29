@@ -17,6 +17,6 @@ Automatic: Cloudflare Workers Builds is connected to this repo. Push or merge to
 
 - Redirect Rule "www to tin-banozic.from.hr": `https://www.*` → `https://${1}` (301, keeps query string)
 - SSL: Full (strict), Always Use HTTPS, minimum TLS 1.2, Early Hints on
-- Bot Fight Mode on
+- Bot Fight Mode off (unlike bregly.com and marichoo.com): it challenged Bing Site Scan and SEO tools, and a static page has nothing it needs to protect. WAF managed rules still block exploit scans
 - AI bot policies: Search, Agent and Training all allowed (unlike bregly.com and marichoo.com, where Training is Disallow). Managed robots.txt and Bot Preference Sync are on, but with nothing blocked Cloudflare prepends nothing
 - Email Routing: `hello@tin-banozic.from.hr` → my personal Gmail, with MX/SPF/DKIM (added by Cloudflare) and a strict DMARC record

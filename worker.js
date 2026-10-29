@@ -10,6 +10,7 @@ import ogImage from "./img/og.jpg";
 const files = {
   "/img/avatar.webp": [avatar, "image/webp"],
   "/favicon.png": [favicon, "image/png"],
+  "/favicon.ico": [favicon, "image/png"],
   "/apple-touch-icon.png": [appleTouchIcon, "image/jpeg"],
   "/og.jpg": [ogImage, "image/jpeg"],
   "/robots.txt": [robots, "text/plain; charset=utf-8"],
