@@ -1,6 +1,6 @@
 # tin-banozic.from.hr
 
-Personal website for Tin Banozic, served by the Cloudflare Worker `tin-banozic`.
+Personal website for Tin Banožić, served by the Cloudflare Worker `tin-banozic`.
 
 - `index.html`: the page (the site is this one page; every other path gets `404.html` with a 404 status)
 - `404.html`: not-found page
