@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tin Banozic</title>
-  <meta name="description" content="Tin Banozic. Coming soon.">
+  <meta name="description" content="Tin Banozic, Senior Product Manager. B2B SaaS, platforms and marketplaces, digital growth and experience, AI and automation.">
   <meta name="theme-color" content="#07090f">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -19,11 +19,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 32px 16px;
+      padding: 0 16px;
       background: var(--bg);
       color: var(--text);
       font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -69,7 +65,16 @@
       animation: fade 2.5s ease 0.3s both;
     }
 
-    main { position: relative; z-index: 1; max-width: 720px; }
+    main { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 0 32px;
+    }
 
     /* Photo in a circle with a slowly rotating gradient ring */
     .avatar {
@@ -144,30 +149,141 @@
         shine 6s linear 2s infinite;
     }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+    .role {
+      font-size: clamp(18px, 3.4vw, 22px);
+      font-weight: 600;
+      margin-bottom: 14px;
+      animation: rise 0.8s cubic-bezier(.2, .7, .2, 1) 1.1s both;
+    }
+    .tags {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+      animation: rise 0.8s cubic-bezier(.2, .7, .2, 1) 1.25s both;
+    }
+    .tags span { color: #67e8f9; padding: 0 2px 0 6px; }
+
+    .scroll {
+      margin-top: 44px;
+      width: 22px;
+      height: 36px;
+      border: 1.5px solid var(--line);
+      border-radius: 12px;
+      position: relative;
+      animation: fade 1s ease 1.8s both;
+    }
+    .scroll::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 7px;
+      width: 3px;
+      height: 7px;
+      margin-left: -1.5px;
+      border-radius: 2px;
+      background: var(--muted);
+      animation: nudge 1.8s ease-in-out infinite;
+    }
+
+    section {
+      text-align: left;
+      padding: 56px 0;
+      border-top: 1px solid var(--line);
+    }
+    h2 {
       font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: #67e8f9;
+      margin-bottom: 20px;
+    }
+    .lead { font-size: clamp(19px, 3.2vw, 23px); line-height: 1.55; }
+    .lead + .lead { margin-top: 16px; }
+    .muted { color: var(--muted); }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .stat, .card {
       border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(255, 255, 255, 0.035);
       -webkit-backdrop-filter: blur(8px);
       backdrop-filter: blur(8px);
-      padding: 9px 16px;
-      border-radius: 999px;
-      animation: rise 0.8s cubic-bezier(.2, .7, .2, 1) 1.2s both;
+      border-radius: 16px;
     }
-    .badge i {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #22d3ee;
-      box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.6);
-      animation: pulse 2s infinite;
+    .stat { padding: 18px 16px; }
+    .stat b {
+      display: block;
+      font-size: clamp(26px, 5vw, 34px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(100deg, #f8fafc, #67e8f9 60%, #a5b4fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .stat span { font-size: 13px; color: var(--muted); }
+
+    .companies { display: flex; flex-wrap: wrap; gap: 10px; }
+    .companies li {
+      list-style: none;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 9px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+    .card { padding: 22px 20px; }
+    .card small {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .card h3 { font-size: 18px; margin-bottom: 8px; }
+    .card p { font-size: 15px; line-height: 1.55; color: var(--muted); }
+
+    .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 11px 20px;
+      border-radius: 999px;
+      transition: border-color 0.25s ease, background 0.25s ease;
+    }
+    .links a:hover, .links a:focus-visible { border-color: rgba(103, 232, 249, 0.6); background: rgba(103, 232, 249, 0.08); }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 40px 0 48px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    footer q { font-style: italic; }
+    footer cite { display: block; margin-top: 8px; font-size: 12px; font-style: normal; letter-spacing: 0.14em; text-transform: uppercase; }
+    footer cite::before { content: "— "; }
+
+    @media (max-width: 520px) {
+      .stats { grid-template-columns: 1fr; }
     }
 
     @keyframes letter {
@@ -177,6 +293,7 @@
     @keyframes shine { to { background-position: -300% 0; } }
     @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
     @keyframes pop { from { opacity: 0; transform: scale(0.4) rotate(-12deg); } to { opacity: 1; transform: none; } }
+    @keyframes nudge { 0%, 100% { transform: translateY(0); opacity: 1; } 60% { transform: translateY(9px); opacity: 0; } }
     @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
     @keyframes spin { to { --angle: 360deg; } }
     @keyframes wave {
@@ -185,10 +302,6 @@
       20% { transform: rotate(-8deg); }
       40% { transform: rotate(-4deg); }
       50% { transform: rotate(10deg); }
-    }
-    @keyframes pulse {
-      70% { box-shadow: 0 0 0 8px rgba(34, 211, 238, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0); }
     }
     @keyframes drift1 { to { transform: translate(18vmax, 12vmax) scale(1.15); } }
     @keyframes drift2 { to { transform: translate(-16vmax, -10vmax) scale(1.1); } }
@@ -204,13 +317,75 @@
   <div class="grid" aria-hidden="true"></div>
 
   <main>
-    <div class="avatar"><img src="/img/avatar.webp" alt="Tin Banozic" width="132" height="132"></div>
-    <p class="hello">Hello, I'm <span class="wave">👋</span></p>
-    <h1 aria-label="Tin Banozic">
-      <span class="word" aria-hidden="true"><span class="l" style="--i:0">T</span><span class="l" style="--i:1">i</span><span class="l" style="--i:2">n</span></span>
-      <span class="word" aria-hidden="true"><span class="l" style="--i:4">B</span><span class="l" style="--i:5">a</span><span class="l" style="--i:6">n</span><span class="l" style="--i:7">o</span><span class="l" style="--i:8">z</span><span class="l" style="--i:9">i</span><span class="l" style="--i:10">c</span></span>
-    </h1>
-    <div><span class="badge"><i></i>Coming soon</span></div>
+    <header class="hero">
+      <div class="avatar"><img src="/img/avatar.webp" alt="Tin Banozic" width="132" height="132"></div>
+      <p class="hello">Hello, I'm <span class="wave">👋</span></p>
+      <h1 aria-label="Tin Banozic">
+        <span class="word" aria-hidden="true"><span class="l" style="--i:0">T</span><span class="l" style="--i:1">i</span><span class="l" style="--i:2">n</span></span>
+        <span class="word" aria-hidden="true"><span class="l" style="--i:4">B</span><span class="l" style="--i:5">a</span><span class="l" style="--i:6">n</span><span class="l" style="--i:7">o</span><span class="l" style="--i:8">z</span><span class="l" style="--i:9">i</span><span class="l" style="--i:10">c</span></span>
+      </h1>
+      <p class="role">Senior Product Manager</p>
+      <p class="tags">Digital&nbsp;Products<span>·</span> Web&nbsp;&amp;&nbsp;Apps<span>·</span> B2B&nbsp;SaaS<span>·</span> Platforms&nbsp;&amp;&nbsp;Marketplaces<span>·</span> Growth<span>·</span> UX<span>·</span> Data<span>·</span> AI&nbsp;&amp;&nbsp;Automation</p>
+      <div class="scroll" aria-hidden="true"></div>
+    </header>
+
+    <section>
+      <h2>About</h2>
+      <p class="lead">I build digital products that people actually use. For 15+ years I've worked on B2B SaaS, cloud marketplaces, analytics and digital experience, turning customer insight and data into products that perform.</p>
+      <p class="lead muted">I work across business, design, data and engineering, and use AI and automation hands-on. Based in Croatia, working remotely worldwide.</p>
+      <div class="stats">
+        <div class="stat"><b>15+</b><span>years in digital products</span></div>
+        <div class="stat"><b>+45%</b><span>marketplace conversion</span></div>
+        <div class="stat"><b>8×</b><span>more B2B sales leads</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Where I've worked</h2>
+      <ul class="companies">
+        <li>Barrage</li>
+        <li>Deutsche Telekom</li>
+        <li>Croatian Telekom</li>
+        <li>Infobip</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>My ventures</h2>
+      <div class="cards">
+        <div class="card">
+          <small>Digital business</small>
+          <h3>uZagorju.com</h3>
+          <p>A regional tourism platform built from scratch, took to #1 on Google, and sold.</p>
+        </div>
+        <div class="card">
+          <small>Mobile game</small>
+          <h3>Drunk Runner</h3>
+          <p>A mobile game with 100,000+ downloads.</p>
+        </div>
+        <div class="card">
+          <small>Platform</small>
+          <h3>GoDigital</h3>
+          <p>A content marketing platform for small businesses.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Get in touch</h2>
+      <p class="lead">Open to conversations about product, growth and AI.</p>
+      <div class="links">
+        <a href="mailto:hello@tin-banozic.from.hr">hello@tin-banozic.from.hr</a>
+        <a href="https://www.linkedin.com/in/tinbanozic" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <blockquote>
+      <q>Action is the foundational key to all success.</q>
+      <cite>Pablo Picasso</cite>
+    </blockquote>
+  </footer>
 </body>
 </html>
