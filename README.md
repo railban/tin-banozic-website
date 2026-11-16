@@ -16,7 +16,7 @@ Automatic: Cloudflare Workers Builds is connected to this repo. Push or merge to
 ## Cloudflare zone setup (same as bregly.com and marichoo.com)
 
 - Redirect Rule "www to tin-banozic.from.hr": `https://www.*` → `https://${1}` (301, keeps query string)
-- Redirect Rule "Old WordPress author page to homepage": `/author/tin-banozic` (with or without trailing slash) → `https://tin-banozic.from.hr/` (301). Add other old WordPress URLs to this rule rather than to `worker.js`
+- Redirect Rule "Old WordPress pages to homepage": `/author/tin-banozic` and `/category/tinbanozic` (each with or without trailing slash) → `https://tin-banozic.from.hr/` (301). Add other old WordPress URLs to this rule rather than to `worker.js`
 - SSL: Full (strict), Always Use HTTPS, minimum TLS 1.2, Early Hints on
 - Bot Fight Mode off (unlike bregly.com and marichoo.com): it challenged Bing Site Scan and SEO tools, and a static page has nothing it needs to protect. WAF managed rules still block exploit scans
 - AI bot policies: Search, Agent and Training all allowed (unlike bregly.com and marichoo.com, where Training is Disallow). Managed robots.txt and Bot Preference Sync are on, but with nothing blocked Cloudflare prepends nothing
