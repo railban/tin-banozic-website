@@ -4,7 +4,7 @@ Personal website for Tin Banožić, served by the Cloudflare Worker `tin-banozic
 
 - `index.html`: the page (the site is this one page; every other path gets `404.html` with a 404 status)
 - `404.html`: not-found page
-- `robots.txt`, `sitemap.xml`: crawler files. Everything may crawl, including search engines, AI search and AI training, so the site is easy to find in AI tools
+- `robots.txt`, `sitemap.xml`: crawler files. Everything may crawl, including search engines, AI search and AI training, so the site is easy to find in AI tools. No `Content-Signal` line: Bing's robots.txt tester flags it as "Syntax not understood"
 - `img/`: profile photo (`avatar.webp`), site icons (`favicon.png`, `apple-touch-icon.jpg`) and the 1200×630 social preview image (`og.jpg`, served at `/og.jpg`)
 - `worker.js`: serves the page and images
 - `wrangler.jsonc`: Worker config with custom domains `tin-banozic.from.hr` and `www.tin-banozic.from.hr`
